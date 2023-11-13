@@ -17,7 +17,29 @@ function HomeScreen() {
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>My Settings Screen</Text>
+      <Text>Settings Screen</Text>
+    </View>
+  );
+}
+
+function AddScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Add Screen</Text>
+    </View>
+  );
+}
+function NotificationsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Notifications Screen</Text>
+    </View>
+  );
+}
+function SearchScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Search Screen</Text>
     </View>
   );
 }
@@ -33,17 +55,26 @@ export default function App() {
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
+              iconName = focused ? 'home' : 'home-outline';
             }else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-list' : 'ios-list-outline';
+              iconName = focused ? 'settings' : 'settings-outline';
+            }else if (route.name === 'Add') {
+              iconName = focused ? 'add' : 'add-outline';
+            }else if (route.name === 'Notifications') {
+              iconName = focused ? 'notifications' : 'notifications-outline';
+            }else if (route.name === 'Search') {
+              iconName = focused ? 'search' : 'search-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
           }
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Main' }} />
-        <Tab.Screen name="Settings" component={SettingsScreen} options={{ title: 'My Settings' }}  />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Home' }} />
+        <Tab.Screen name="Search" component={SearchScreen} options={{ title: 'Search' }} />
+        <Tab.Screen name="Add" component={AddScreen} options={{ title: 'Add' }} />
+        <Tab.Screen name="Notifications" component={NotificationsScreen} options={{ title: 'Notifications' }} />
+        <Tab.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }}  />
       </Tab.Navigator>
     </NavigationContainer>
   );

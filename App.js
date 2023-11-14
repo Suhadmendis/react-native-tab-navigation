@@ -66,7 +66,29 @@ export default function App() {
               iconName = focused ? 'search' : 'search-outline';
             }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: -30 }}>
+                <Ionicons name={iconName} size={size} color={color} />
+              </View>
+            );
+          },
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            position: 'absolute',
+            bottom: 40,
+            left: 20,
+            right: 20,
+            borderRadius: 20,
+            height: 70,
+
+            elevation: 10,
+            shadowColor: 'black',
+            shadowOffset: {
+              height: 0,
+              width: 0
+            },
+            shadowOpacity: 0.1,
+            shadowRadius: 10
           }
         })}
       >

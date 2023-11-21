@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -47,6 +47,10 @@ function SearchScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+
+  const [notifications, setNotifications] = useState(1);
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -99,6 +103,28 @@ export default function App() {
                   <Ionicons name={iconName} size={size} color={color} />
                 </View>
               );
+            }else if (route.name === 'Notifications'){
+              return (
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: -30 }}>
+                  {
+                    notifications > 0 ? (
+                      <View style={{
+                        position: 'absolute',
+                        top: 20,
+                        right: 5,
+                        zIndex: 1,
+                        width: 9,
+                        height: 9,
+                        borderRadius: 100,
+                        backgroundColor: 'red',
+                        }}>
+
+                      </View>
+                    ) : null
+                  }
+                  <Ionicons name={iconName} size={size} color={color} />
+                </View>
+              )
             }else{
               return (
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: -30 }}>

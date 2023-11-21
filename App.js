@@ -53,24 +53,61 @@ export default function App() {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
+            let mainButtonColor = 'black';
 
             if (route.name === 'Home') {
               iconName = focused ? 'home' : 'home-outline';
             }else if (route.name === 'Settings') {
               iconName = focused ? 'settings' : 'settings-outline';
             }else if (route.name === 'Add') {
-              iconName = focused ? 'add' : 'add-outline';
+              color = 'white';
+              size = 40;
+
+              if (focused) mainButtonColor = 'rgb(0, 122, 255)';
+
+              iconName = focused ? 'finger-print' : 'finger-print';
+
             }else if (route.name === 'Notifications') {
               iconName = focused ? 'notifications' : 'notifications-outline';
             }else if (route.name === 'Search') {
               iconName = focused ? 'search' : 'search-outline';
             }
 
-            return (
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: -30 }}>
-                <Ionicons name={iconName} size={size} color={color} />
-              </View>
-            );
+
+            if (route.name === 'Add') {
+              return (
+                <View style={{
+                  width: 65,
+                  height: 65,
+                  paddingLeft: 2,
+                  paddingTop: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: -5,
+                  backgroundColor:  mainButtonColor,
+                  borderRadius: 100,
+
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 0,
+                  },
+                  shadowOpacity: 0.3,
+                  shadowRadius: 5,
+                  elevation: 5
+                 }}>
+                  <Ionicons name={iconName} size={size} color={color} />
+                </View>
+              );
+            }else{
+              return (
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: -30 }}>
+                  <Ionicons name={iconName} size={size} color={color} />
+                </View>
+              );
+            }
+
+
           },
           tabBarShowLabel: false,
           tabBarStyle: {
